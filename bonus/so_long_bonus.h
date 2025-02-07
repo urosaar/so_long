@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:57:02 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:12:02 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/07 19:12:51 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,14 @@ typedef struct s_images
 	void	*player_left;
 	void	*player_right;
 	int		moving;
+	void	*enemy_frame1;
+	void	*enemy_frame2;
+	void	*enemy_frame3;
+	int		enemy_anim_frame;
+	void	*idle1;
+	void	*idle2;
+	void	*idle3;
+	int		idle_frame;
 }					t_images;
 
 typedef struct s_data
@@ -95,4 +103,9 @@ void	validate_path(t_data *data);
 int		key_release(int keycode, t_all *all);
 void	put_player_image(t_data *data, t_images *images, int x, int y);
 void	put_enemy_image(t_data *data, t_images *images, int x, int y);
+void	xpm_to_img_enemy(t_images *images, t_data *data);
+void	load_player_images(t_images *images, t_data *data);
+int		animate_all(void *param);
+int		handle_player_movement(t_all *all);
+void	update_animation(t_all *all);
 #endif

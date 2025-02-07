@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:10:54 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:10:42 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:19:56 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,10 @@ int	key_release(int keycode, t_all *all)
 		|| keycode == 126)
 	{
 		mlx_put_image_to_window(all->data->mlx, all->data->mlx_win,
+			all->images->floor, all->data->p_x * 64, all->data->p_y * 64);
+		mlx_put_image_to_window(all->data->mlx, all->data->mlx_win,
 			all->images->player, all->data->p_x * 64, all->data->p_y * 64);
+		all->images->moving = 0;
 	}
 	return (0);
 }

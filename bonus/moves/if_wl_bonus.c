@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:55:42 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:09:12 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:42:07 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,19 @@ void	put_player_image(t_data *data, t_images *images, int x, int y)
 
 void	put_enemy_image(t_data *data, t_images *images, int x, int y)
 {
-	mlx_put_image_to_window(data->mlx, data->mlx_win,
-		images->floor, y * 64, x * 64);
-	mlx_put_image_to_window(data->mlx, data->mlx_win,
-		images->enemy, y * 64, x * 64);
+	void	*current_frame;
+
+	current_frame = images->enemy;
+	if (images->enemy_anim_frame == 1)
+		current_frame = images->enemy_frame1;
+	else if (images->enemy_anim_frame == 2)
+		current_frame = images->enemy_frame2;
+	else if (images->enemy_anim_frame == 3)
+		current_frame = images->enemy_frame3;
+	mlx_put_image_to_window(data->mlx, data->mlx_win, images->floor,
+		y * 64, x * 64);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, current_frame,
+		y * 64, x * 64);
 }
 
 void	init_mlx(t_data *data, t_images *images, t_all *all)

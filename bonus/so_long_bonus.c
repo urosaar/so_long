@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 14:54:31 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:10:20 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:27:07 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	main(int ac, char **av)
 	p_x_y(&data);
 	parsing(&data);
 	init_mlx(&data, &images, &all);
+	mlx_loop_hook(data.mlx, animate_all, &all);
 	mlx_hook(data.mlx_win, 2, 1L << 0, player_movement, &all);
 	mlx_hook(data.mlx_win, 3, 1L << 1, key_release, &all);
 	mlx_hook(data.mlx_win, 17, 1L << 17, close_game, &all);

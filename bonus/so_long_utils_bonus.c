@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 13:06:52 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:10:33 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/07 18:42:46 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ void	xpm_to_img(t_images *images, t_data *data)
 			"./images/E.xpm", &width, &height);
 	images->collect = mlx_xpm_file_to_image(data->mlx,
 			"./images/C.xpm", &width, &height);
-	images->player = mlx_xpm_file_to_image(data->mlx,
-			"./images/P.xpm", &width, &height);
-	images->enemy = mlx_xpm_file_to_image(data->mlx,
-			"./images/N.xpm", &width, &height);
+	load_player_images(images, data);
+	xpm_to_img_enemy(images, data);
 	images->player_left = mlx_xpm_file_to_image(data->mlx,
 			"./images/left.xpm", &width, &height);
 	images->player_right = mlx_xpm_file_to_image(data->mlx,

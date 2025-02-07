@@ -27,6 +27,8 @@ B_SRC = ../bonus/so_long_bonus.c \
         ../bonus/libft/ft_printf/ft_printf_utils.c \
         ../bonus/pmoves_bonus.c \
         ../bonus/rmap_bonus.c \
+        ../bonus/utils2_bonus.c \
+        ../bonus/utils3_bonus.c \
         ../bonus/moves/if_wl_bonus.c \
         ../bonus/moves/moves_bonus.c \
         ../bonus/parssing/map_parsing_bonus.c \
