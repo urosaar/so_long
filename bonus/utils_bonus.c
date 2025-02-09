@@ -48,8 +48,7 @@ void	validate_path(t_data *data)
 		{
 			if (data->map[i][j] == 'C' || data->map[i][j] == 'E')
 			{
-				ft_printf("Error: player can't win the game :(\n",
-					data->map[i][j], i, j);
+				ft_printf("Error: player can't win the game :(\n");
 				free_map(data->map, data->height);
 				exit(1);
 			}
