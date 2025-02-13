@@ -6,25 +6,25 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 18:23:43 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 17:41:26 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:27:37 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../so_long.h"
 
-void	flood_fill(t_data *data, int x, int y)
+void	flood_fill(char **map, int x, int y, t_data *data)
 {
 	if (x < 0 || x >= data->height || y < 0 || y >= data->width)
 		return ;
-	if (data->map[x][y] == 'E')
-		data->map[x][y] = '1';
-	if (data->map[x][y] != '1')
+	if (map[x][y] == 'E')
+		map[x][y] = '1';
+	if (map[x][y] != '1')
 	{
-		data->map[x][y] = '1';
-		flood_fill(data, x + 1, y);
-		flood_fill(data, x - 1, y);
-		flood_fill(data, x, y + 1);
-		flood_fill(data, x, y - 1);
+		map[x][y] = '1';
+		flood_fill(map, x + 1, y, data);
+		flood_fill(map, x - 1, y, data);
+		flood_fill(map, x, y + 1, data);
+		flood_fill(map, x, y - 1, data);
 	}
 }
 
@@ -46,8 +46,8 @@ void	count_ecp(t_data *data, t_ecp *ecp, char cell)
 	else if (cell == 'P')
 	{
 		ecp->p++;
-		data->p_x = ecp->x;
-		data->p_y = ecp->y;
+		data->p_x = ecp->y;
+		data->p_y = ecp->x;
 	}
 	else if (cell != '0' && cell != '1')
 	{
@@ -83,11 +83,14 @@ void	parse_ecp(t_data *data)
 
 void	parsing(t_data *data)
 {
+	char	**map_copy;
+
 	validate_walls(data);
 	validate_rectangular(data);
 	parse_ecp(data);
 	validate_chars(data);
-	flood_fill(data, data->p_x, data->p_y);
-	free_map(data->map, data->height);
-	data->map = readmap(data->file, data);
+	map_copy = copy_map(data);
+	flood_fill(map_copy, data->p_y, data->p_x, data);
+	validate_path(map_copy, data->height, data->width);
+	free_map(map_copy, data->height);
 }

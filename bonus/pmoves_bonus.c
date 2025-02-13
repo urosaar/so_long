@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:35:43 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:09:55 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 12:31:17 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,13 +75,13 @@ int	player_movement(int keycode, t_all *all)
 		free_map(all->data->map, all->data->height);
 		exit(0);
 	}
-	else if (keycode == 126)
+	else if (keycode == 126 || keycode == 13)
 		move_up(all);
-	else if (keycode == 125)
+	else if (keycode == 125 || keycode == 1)
 		move_down(all);
-	else if (keycode == 124)
+	else if (keycode == 124 || keycode == 2)
 		move_right(all);
-	else if (keycode == 123)
+	else if (keycode == 123 || keycode == 0)
 		move_left(all);
 	return (0);
 }

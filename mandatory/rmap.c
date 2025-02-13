@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:04:16 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 17:49:58 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:28:49 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static void	fill_processed_map(char *file, t_data *data, char **map)
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
-		exit_error("Failed to reopen map file", map);
+		return (free_map(map, data->height));
 	i = 0;
 	while (i < data->height)
 	{
@@ -80,9 +80,11 @@ static void	fill_processed_map(char *file, t_data *data, char **map)
 		if ((int)ft_strlen(line) != data->width)
 		{
 			free(line);
-			exit_error("Invalid map try check lines lengths)", map);
+			free_map(map, i);
+			exit_error("Invalid map try check lines lengths :)", NULL);
 		}
-		map[i++] = line;
+		map[i] = line;
+		i++;
 	}
 	close(fd);
 }

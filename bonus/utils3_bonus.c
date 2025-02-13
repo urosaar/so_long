@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 19:06:03 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/07 19:16:21 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:33:32 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,17 @@ void	update_animation(t_all *all)
 	else if (all->images->idle_frame == 3)
 		mlx_put_image_to_window(all->data->mlx, all->data->mlx_win,
 			all->images->idle3, win_x, win_y);
+}
+
+char	**copy_map(t_data *data)
+{
+	char	**copy;
+	int		i;
+
+	copy = malloc(sizeof(char *) * (data->height + 1));
+	i = -1;
+	while (++i < data->height)
+		copy[i] = ft_strdup(data->map[i]);
+	copy[i] = NULL;
+	return (copy);
 }

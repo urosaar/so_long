@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 18:01:26 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:11:42 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:12:19 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,6 @@ void	check_exit(t_all *all, int x, int y);
 void	exit_error(char *message, char **map);
 void	error_exit(t_data *data, char *message);
 void	init_mlx(t_data *data, t_images *images, t_all *all);
+void	validate_path(char **map, int height, int width);
+char	**copy_map(t_data *data);
 #endif

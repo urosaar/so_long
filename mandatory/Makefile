@@ -39,12 +39,12 @@ B_OBJ = $(B_SRC:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) so_long.h
+$(NAME): $(OBJ) so_long.h ./libft/ft_printf/ft_printf.h ./libft/get_next_line/get_next_line.h
 	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(NAME) $(OBJ)
 
 bonus: $(B_NAME)
 
-$(B_NAME): $(B_OBJ) ../bonus/so_long_bonus.h
+$(B_NAME): $(B_OBJ) ../bonus/so_long_bonus.h ../bonus/libft/ft_printf/ft_printf.h ../bonus/libft/get_next_line/get_next_line.h
 	$(CC) $(CFLAGS) $(MLX_FLAGS) -o $(B_NAME) $(B_OBJ)
 
 %.o: %.c

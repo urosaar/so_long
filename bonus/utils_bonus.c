@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 19:10:54 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/07 18:19:56 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:34:16 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,20 @@ void	display_moves(t_all *all)
 	free(move_text);
 }
 
-void	validate_path(t_data *data)
+void	validate_path(char **map, int height, int width)
 {
 	int	i;
 	int	j;
 
 	i = -1;
-	while (++i < data->height)
+	while (++i < height)
 	{
 		j = -1;
-		while (++j < data->width)
+		while (++j < width)
 		{
-			if (data->map[i][j] == 'C' || data->map[i][j] == 'E')
+			if (map[i][j] == 'C' || map[i][j] == 'E')
 			{
-				ft_printf("Error: player can't win the game :(\n");
-				free_map(data->map, data->height);
+				ft_printf("Error: Player cannot win the game :(\n");
 				exit(1);
 			}
 		}
@@ -110,7 +109,11 @@ int	key_release(int keycode, t_all *all)
 	if (keycode == 123
 		|| keycode == 124
 		|| keycode == 125
-		|| keycode == 126)
+		|| keycode == 126
+		|| keycode == 13
+		|| keycode == 0
+		|| keycode == 1
+		|| keycode == 2)
 	{
 		mlx_put_image_to_window(all->data->mlx, all->data->mlx_win,
 			all->images->floor, all->data->p_x * 64, all->data->p_y * 64);

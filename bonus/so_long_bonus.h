@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 12:57:02 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/07 19:12:51 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:32:04 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,12 @@ void	check_exit(t_all *all, int x, int y);
 void	exit_error(char *message, char **map);
 void	error_exit(t_data *data, char *message);
 void	init_mlx(t_data *data, t_images *images, t_all *all);
+char	**copy_map(t_data *data);
 
 void	display_moves(t_all *all);
-void	move_player(t_all *arg, int new_y, int new_x,
-			void (*move_func)(t_all *, int, int));
 char	*ft_itoa(int n);
 void	check_enemy_collision(char cell);
-void	validate_path(t_data *data);
+void	validate_path(char **map, int height, int width);
 int		key_release(int keycode, t_all *all);
 void	put_player_image(t_data *data, t_images *images, int x, int y);
 void	put_enemy_image(t_data *data, t_images *images, int x, int y);

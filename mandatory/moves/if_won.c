@@ -6,7 +6,7 @@
 /*   By: oukhanfa <oukhanfa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 18:55:42 by oukhanfa          #+#    #+#             */
-/*   Updated: 2025/02/06 18:02:08 by oukhanfa         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:26:09 by oukhanfa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,37 @@ void	init_mlx(t_data *data, t_images *images, t_all *all)
 	put_map(data, images);
 	all->data = data;
 	all->images = images;
+}
+
+void	validate_path(char **map, int height, int width)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (++i < height)
+	{
+		j = -1;
+		while (++j < width)
+		{
+			if (map[i][j] == 'C' || map[i][j] == 'E')
+			{
+				ft_printf("Error: Player cannot win the game :(\n");
+				exit(1);
+			}
+		}
+	}
+}
+
+char	**copy_map(t_data *data)
+{
+	char	**copy;
+	int		i;
+
+	copy = malloc(sizeof(char *) * (data->height + 1));
+	i = -1;
+	while (++i < data->height)
+		copy[i] = ft_strdup(data->map[i]);
+	copy[i] = NULL;
+	return (copy);
 }
